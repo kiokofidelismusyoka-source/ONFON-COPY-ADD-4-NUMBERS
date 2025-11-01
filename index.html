@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Clean & Add 4 to Numbers</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+    textarea { width: 100%; height: 200px; margin-bottom: 10px; font-size: 16px; }
+    button { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; margin-right: 10px; }
+    button:hover { background: #218838; }
+    #copyBtn { background: #007bff; }
+    #copyBtn:hover { background: #0056b3; }
+    #clearBtn { background: #dc3545; }
+    #clearBtn:hover { background: #a71d2a; }
+    .output { background: #fff; padding: 10px; white-space: pre-wrap; font-size: 16px; border: 1px solid #ccc; margin-top: 10px; }
+  </style>
 </head>
 <body>
   <h2>Clean & Add 4 to Numbers</h2>
@@ -14,6 +24,35 @@
   <button id="clearBtn" onclick="clearAll()">Clear All</button>
   <div id="result" class="output"></div>
 
-  <script src="script.js"></script>
+  <script>
+    function cleanAndFormat() {
+      let text = document.getElementById('input').value;
+      // Split by lines, remove empty lines & extra spaces
+      let numbers = text.split(/\r?\n/).map(n => n.trim()).filter(Boolean);
+      // Add 4 at the beginning of each number
+      let formatted = numbers.map(n => n.startsWith('4') ? n : '4' + n);
+      // Show results with total count
+      document.getElementById('result').innerText = 
+        "Total numbers: " + formatted.length + "\n\n" + formatted.join("\n");
+      // Clear the input area after processing
+      document.getElementById('input').value = '';
+    }
+
+    function copyAll() {
+      let text = document.getElementById('result').innerText.split("\n\n")[1];
+      if (!text) {
+        alert("No numbers to copy! Please Clean & Format first.");
+        return;
+      }
+      navigator.clipboard.writeText(text).then(() => {
+        alert("All numbers copied to clipboard!");
+      });
+    }
+
+    function clearAll() {
+      document.getElementById('input').value = '';
+      document.getElementById('result').innerText = '';
+    }
+  </script>
 </body>
 </html>
