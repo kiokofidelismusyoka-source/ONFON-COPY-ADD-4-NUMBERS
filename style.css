@@ -1,0 +1,9 @@
+body { font-family: Arial, sans-serif; background: #f8f9fa; padding: 20px; }
+textarea { width: 100%; height: 200px; margin-bottom: 10px; font-size: 16px; }
+button { background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer; margin-right: 10px; }
+button:hover { background: #218838; }
+#copyBtn { background: #007bff; }
+#copyBtn:hover { background: #0056b3; }
+#clearBtn { background: #dc3545; }
+#clearBtn:hover { background: #a71d2a; }
+.output { background: #fff; padding: 10px; white-space: pre-wrap; font-size: 16px; border: 1px solid #ccc; margin-top: 10px; }
